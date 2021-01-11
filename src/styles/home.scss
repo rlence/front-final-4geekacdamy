@@ -1,0 +1,19 @@
+@import "~bootstrap/scss/bootstrap.scss";
+
+.container-fluid{
+    text-align: center;
+}
+
+.card-rg{
+    width: 50%;
+    margin: auto;
+}
+
+input{
+    margin-bottom: 20px;
+}
+
+.inp-reg{
+    display: flex;
+    flex-direction: column;
+}
