@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
-import "../../styles/home.scss";
 import { Context } from "../store/appContext";
+import "../../styles/home.scss";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function Home(props) {
+function Login(props) {
 	const { store, actions } = useContext(Context);
 
 	const [state, setState] = useState({
@@ -12,19 +12,13 @@ function Home(props) {
 		password: ""
 	});
 
-	const [loading, setLoad] = useState(false);
 	const [err, setErr] = useState("");
+
+	const [loading, setLoad] = useState(false);
 
 	const handelSubmit = e => {
 		e.preventDefault();
 		setLoad(true);
-		actions
-			.registerUser(state)
-			.then(ok => props.history.push("/"))
-			.catch(err => {
-				setErr(err);
-				setLoad(false);
-			});
 	};
 
 	const handelChange = e => {
@@ -33,15 +27,14 @@ function Home(props) {
 
 	return (
 		<div className="container-fluid">
-			<p>Registro</p>
+			<p>Login</p>
 			<form className="card card-rg" onChange={handelChange} onSubmit={handelSubmit}>
 				<div className="card-body inp-reg">
 					<input className="form-control" name="email" type="email" placeholder="Email" />
 					<input className="form-control" name="password" type="password" placeholder="Pasword" />
 					<p>
-						Ya tienen cuenta, inicia sessión <Link to="/">aqui</Link>
+						Registrate <Link to="/registro">aqui</Link>
 					</p>
-					{err != "" ? <p>{err}</p> : null}
 					{!loading ? (
 						<button type="submit" className="btn btn-primary">
 							{" "}
@@ -59,8 +52,8 @@ function Home(props) {
 	);
 }
 
-Home.propTypes = {
+Login.propTypes = {
 	history: PropTypes.object
 };
 
-export default Home;
+export default Login;
