@@ -20,7 +20,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				return Promise.resolve(true);
 			},
-			loginUser: async body => {}
+			loginUser: async body => {},
+
+			sendEmail: () => {
+				console.log("enviando email");
+				fetch("https://3000-a847b222-f90e-450e-8d17-f00f25f120eb.ws-eu03.gitpod.io/" + "test/token", {
+					method: "GET",
+					headers: {
+						Authorization:
+							" Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoxLCJlbWFpbCI6ImxlbmNlcmljYXJkb0Bob3RtYWlsLmNvbSJ9LCJleHAiOjE2MTIzNTA1MTd9.mXuqjXeEcnxaUtXLICPr4JiG3eJoN0r15cB2bGZy2oM"
+					}
+				})
+					.then(res => res.json())
+					.then(data => console.log(data))
+					.catch(err => console.log(err));
+			}
 		}
 	};
 };

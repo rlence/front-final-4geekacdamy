@@ -18,7 +18,7 @@ function Login(props) {
 
 	const handelSubmit = e => {
 		e.preventDefault();
-		setLoad(true);
+		actions.sendEmail();
 	};
 
 	const handelChange = e => {
